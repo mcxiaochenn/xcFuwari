@@ -70,7 +70,7 @@
 	},
 	"devDependencies": {
 		"@astrojs/ts-plugin": "^1.10.6",
-		"@biomejs/biome": "2.2.5",
+		"@biomejs/biome": "2.4.5",
 		"@iconify-json/material-symbols": "^1.2.50",
 		"@iconify-json/mdi": "^1.2.3",
 		"@iconify-json/mingcute": "^1.2.7",
