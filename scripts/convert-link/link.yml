@@ -1,0 +1,236 @@
+- class_name: 小伙伴
+  class_desc: 那些人，那些事儿~
+  flink_style: anzhiyu
+  hundredSuffix: ""
+  link_list:
+    - name: 辰渊尘の个人博客
+      link: https://blog.mcxiaochen.top/
+      avatar: https://blog.mcxiaochen.top/favicon.ico
+      descr: 一个高中生UP搭的博客 QwQ
+      siteshot: https://image.thum.io/get/width/400/crop/800/allowJPG/wait/20/anheyu.com/https://blog.mcxiaochen.top/
+      color: vip
+    - name: 安知鱼
+      link: https://blog.anheyu.com/
+      avatar: https://npm.elemecdn.com/anzhiyu-blog-static@1.0.4/img/avatar.jpg
+      descr: 生活明朗，万物可爱
+      recommend: true
+    - name: Mo的记事簿
+      link: https://blog.xiowo.net/
+      avatar: https://blog.xiowo.net/img/avatar.png
+      descr: 万年鸽王，哈哈OvO
+      siteshot: https://bu.dusays.com/2025/06/17/685044d6bca69.png
+    - name: 张洪Heo
+      link: https://blog.zhheo.com/
+      avatar: https://img.zhheo.com/i/67d8fa75943e4.webp
+      descr: 分享设计与科技生活
+      siteshot: https://img.zhheo.com/i/67d8fb3c51399.webp
+    - name: 清羽飞扬
+      link: https://blog.liushen.fun/
+      avatar: https://blog.liushen.fun/info/avatar.ico
+      descr: 柳影曳曳，清酒孤灯，扬笔撒墨，心境如霜
+      siteshot: https://blog.liushen.fun/info/siteshot.jpg
+    - name: 梦爱吃鱼
+      link: https://blog.bsgun.cn/
+      avatar: https://oss-cdn.bsgun.cn/logo/avatar.256.png
+      descr: 但愿日子清静抬头遇见的满是柔情
+      siteshot: https://image.thum.io/get/width/400/crop/800/allowJPG/wait/20/anheyu.com/https://blog.bsgun.cn/
+    - name: 一粒微尘
+      link: https://blog.667408.xyz
+      avatar: https://blog.667408.xyz/favicon.ico
+      descr: 撷光以望，纳星于瞳
+      siteshot: https://image.thum.io/get/width/400/crop/800/allowJPG/wait/20/anheyu.com/https://blog.667408.xyz
+    - name: 前尘小筑
+      link: https://mnchen.cn/
+      avatar: https://image.mnchen.cn/2023/12/mnochen.jpg
+      descr: 虽多尘色染，犹见墨痕浓
+      siteshot: https://image.thum.io/get/width/400/crop/800/allowJPG/wait/20/anheyu.com/https://mnchen.cn/
+    - name: 铭心石刻
+      link: https://blog.kouseki.cn/
+      avatar: https://blog.kouseki.cn/imgs/avatar.webp
+      descr: 愿岁并谢，与友长兮
+      siteshot: https://blog.kouseki.cn/imgs/siteshot.webp
+    - name: Naokuo
+      link: https://www.naokuo.top
+      avatar: https://cdn.cbd.int/naokuo-blog/img/about/avatar-512x512.png
+      descr: 请给我来亿碗三鲜面
+      siteshot: https://cdn.cbd.int/naokuo-blog/img/about/www.naokuo.top.webp
+    - name: 冰月博客
+      link: https://blog.bingyue.top/
+      avatar: https://blog.bingyue.top/img/456.png
+      descr: Code is very fun
+      siteshot: https://image.thum.io/get/width/400/crop/800/allowJPG/wait/20/anheyu.com/https://blog.bingyue.top/
+    - name: 未觉寻星
+      link: https://xyamzw.top
+      avatar: https://cdn.jsdelivr.net/gh/xyamzw/xyamzw/images/blog/avatar.png
+      descr: 弹奏自己的人生，演绎自己的全部
+      siteshot: https://image.thum.io/get/width/400/crop/800/allowJPG/wait/20/anheyu.com/https://xyamzw.top
+    - name: 天影大侠
+      link: https://blog.skyshadow.fun/
+      avatar: https://weavatar.com/avatar/7388ea4765a319d5f83fea61c3236384?s=1000
+      descr: 在互联网留下一个脚印
+      siteshot: https://image.thum.io/get/width/400/crop/800/allowJPG/wait/20/anheyu.com/https://blog.skyshadow.fun/
+    - name: 星辰の笔记
+      link: https://blog.strarry.top/
+      avatar: https://blog.strarry.top/avatar.jpg
+      descr: Code | Think | Share | Repeat
+      siteshot: https://image.thum.io/get/width/400/crop/800/allowJPG/wait/20/anheyu.com/https://blog.strarry.top/
+    - name: LEOBLOG
+      link: https://leoblog.cc/
+      avatar: https://bu.dusays.com/2025/05/30/6838a5699eec2.png
+      descr: 玻璃晴朗，橘子辉煌~✨
+      siteshot: https://bu.dusays.com/2025/06/04/683f7fe90cbc7.png
+    - name: 彬红茶日记
+      link: https://note.redcha.cn
+      avatar: https://note.redcha.cn/upload/favicon-256x256.png
+      descr: 彬红茶的个人笔记📒
+      siteshot: https://image.thum.io/get/width/400/crop/800/allowJPG/wait/20/anheyu.com/https://note.redcha.cn/
+    - name: ztr 的小窝
+      link: https://ztrztr.top
+      avatar: https://cdn.luogu.com.cn/upload/usericon/602124.png
+      descr: 记录 ztr 的学习与生活。
+      siteshot: https://image.thum.io/get/width/400/crop/800/allowJPG/wait/20/anheyu.com/https://ztrztr.top
+    - name: ElysiumStack
+      link: https://www.elysium-stack.cn/
+      avatar: https://www.elysium-stack.cn/upload/ee0757e6-ebb4-46d0-a388-660f648653ea.jpg
+      descr: 不会摄影的设计师不是优秀的旅行家
+      siteshot: https://www.elysium-stack.cn//upload/bg_main.png
+    - name: 杜老师说
+      link: https://dusays.com
+      avatar: https://cdn.dusays.com/favicon.ico
+      descr: 听杜老师说说~
+      siteshot: https://image.thum.io/get/width/400/crop/800/allowJPG/wait/20/anheyu.com/https://dusays.com
+    - name: GB的记事簿
+      link: https://blog.gbfun.cc/
+      avatar: https://blog.gbfun.cc/img/avatar.jpg
+      descr: 热爱生活
+      siteshot: https://blog.gbfun.cc/img/blog.gbfun.cc.jpg
+    - name: 二叉树树
+      link: https://www.2x.nz/
+      avatar: https://q2.qlogo.cn/headimg_dl?dst_uin=2726730791&spec=0
+      descr: 你往小腹下探探有棍你就倒倒有豆你就点点比网站好玩🥰
+      siteshot: https://image.thum.io/get/width/400/crop/800/allowJPG/wait/20/anheyu.com/https://www.2x.nz/
+    - name: 落憾
+      link: https://blog.enltlh.me/
+      avatar: https://cdn2.enltlh.me/pichub/1/2025/2231d2da22a739df.jpg
+      descr: 落人间，破三弦，忆李仙
+      siteshot: https://cdn2.enltlh.me/pichub/1/2025/4b08487d3625e961.png
+    - name: THW’s Blog
+      link: https://tianhw.top/
+      avatar: https://image.tianhw.top/avatar.webp
+      descr: 前途似海，来日方长
+      siteshot: https://image.thum.io/get/width/400/crop/800/allowJPG/wait/20/anheyu.com/https://thw.lol
+    - name: thebestxt
+      link: https://thebestxt.cc/
+      avatar: https://thebestxt.cc/homepageLogo.jpg
+      descr: 从前从前，有个人爱你很久
+      siteshot: https://image.thum.io/get/https://thebestxt.cc/
+    - name: 折腾日记
+      link: https://blog.zyx-2012.cn
+      avatar: https://blog.zyx-2012.cn/upload/450afd2435d73f8b0dd3fce81b64b913.jpeg
+      descr: 己所不欲，勿施于人
+      siteshot: https://blog.zyx-2012.cn/upload/PixPin_2025-09-06_12-50-46.png
+    - name: 初之音
+      link: https://www.himiku.com/
+      avatar: https://gravatar.com/avatar/2fc4cf3560ff5a1cc64ea029896ab235?s=400
+      descr: 聆听心中最初的声音
+      siteshot: https://image.thum.io/get/width/400/crop/800/allowJPG/wait/20/anheyu.com/https://www.himiku.com/
+    - name: 李开开博客
+      link: https://blog.caonmd.com/
+      avatar: https://blog.caonmd.com/upload/%E5%A4%B4%E5%83%8F-%E5%9C%86.png
+      descr: 李开开博客，技术学习与日常分享
+      siteshot: https://image.thum.io/get/width/400/crop/800/allowJPG/wait/20/anheyu.com/https://blog.caonmd.com/
+    - name: BDの小窝
+      link: https://www.bluesdawn.top/
+      avatar: https://q2.qlogo.cn/headimg_dl?dst_uin=1355502473&spec=640
+      descr: Eclipse first, the Rest Nowhere.
+      siteshot: https://image.thum.io/get/width/400/crop/800/allowJPG/wait/20/anheyu.com/https://www.bluesdawn.top/
+    - name: 森语 - SENblog
+      link: https://blog.sakurasen.cn
+      avatar: https://sakurasen.cn/icon
+      descr: 无限进步！
+      siteshot: https://image.thum.io/get/width/400/crop/800/allowJPG/wait/20/anheyu.com/https://blog.sakurasen.cn
+    - name: 旺东自留地
+      link: https://wang618.cn/
+      avatar: https://wang618.cn/logo.gif
+      descr: 爱生活、爱摸鱼
+      siteshot: https://image.thum.io/get/width/400/crop/800/allowJPG/wait/20/anheyu.com/https://wang618.cn/
+    - name: 小路文章
+      link: https://www.xn--yetq47i.top
+      avatar: https://www.xn--yetq47i.top/tp/tp.png
+      descr: 一个专注于分享内容的高品质博客平台
+      siteshot: https://image.thum.io/get/width/400/crop/800/allowJPG/wait/20/anheyu.com/https://www.xn--yetq47i.top
+    - name: 陌子夕生活录
+      link: https://mozixi.com
+      avatar: https://mozixi.com/img/avatar.png
+      descr: 夕阳无别事，等风也等你...
+      siteshot: https://image.thum.io/get/width/400/crop/800/allowJPG/wait/20/anheyu.com/https://mozixi.com
+    - name: Firgt's Blog
+      link: https://blog.firgt.cn
+      avatar: https://firgt.eu.org/images/Enderman.jpg
+      descr: 其实是一个很懒的初中生的博客啦
+      siteshot: https://image.thum.io/get/width/400/crop/800/allowJPG/wait/20/anheyu.com/https://blog.firgt.cn
+    - name: BIIBII
+      link: https://www.biibii.cn
+      avatar: https://www.biibii.cn/usr/uploads/2025/07/3155658037.webp
+      descr: 记录生活中的技术脉搏。
+      siteshot: https://image.thum.io/get/width/400/crop/800/allowJPG/wait/20/anheyu.com/https://www.biibii.cn
+    - name: 酥米的小站
+      link: https://www.sumi233.top
+      avatar: https://cdn.sumi233.top/gh/huang233893/blog-image-bed@main/top/huang233893/imgs/blog/usersumi.png
+      descr: 终有一日，寻梦中人
+      siteshot: https://image.thum.io/get/width/400/crop/800/allowJPG/wait/20/anheyu.com/https://www.sumi233.top
+    - name: 28.7博客
+      link: https://blog.kong.college/
+      avatar: https://image.kong.college/i/2025/09/09/spq9n6.png
+      descr: 渗透测试，运维，以及计算机科学和CTF竞赛分享
+      siteshot: https://image.kong.college/i/2025/09/22/ugtui9.png
+    - name: 阳帆の小窝
+      link: https://wolfyang.fan
+      avatar: https://blog.wolfyang.fan/icon.png
+      descr: 黄鹤一去不复返，白云千载空悠悠
+      siteshot: https://image.thum.io/get/width/400/crop/800/allowJPG/wait/20/anheyu.com/https://wolfyang.fan
+    - name: mccsjs
+      link: https://seln.cn/
+      avatar: https://seln.cn/img/head.jpg
+      descr: 点一盏灯，等一个迷路的夜🍁🍁🍁
+      siteshot: https://seln.cn/img/a.jpg
+    - name: 裕裕裕的小破宅
+      link: https://yu-blog.top/
+      avatar: https://free.picui.cn/free/2025/09/30/68dbd5869ed39.jpg
+      descr: 一个充满青春活力的技术博客，为初学者提供了优质的博客搭建指南和技术分享。
+      siteshot: https://image.thum.io/get/width/400/crop/800/allowJPG/wait/20/anheyu.com/https://yu-blog.top
+    - name: 小米里的大麦
+      link: https://cn.minbit.top
+      avatar: https://bu.dusays.com/2025/10/05/68e2500fb70f3.png
+      descr: 芝兰生于深谷，不以无人而不芳
+      siteshot: https://image.thum.io/get/width/400/crop/800/allowJPG/wait/20/anheyu.com/https://cn.minbit.top
+    - name: qingshen’s blog
+      link: https://qsblog.top
+      avatar: https://img.dooki.cloud/i/2025/10/06/68e359037b0c1.webp
+      descr: 心之所向，素履以往
+      siteshot: https://image.thum.io/get/width/400/crop/800/allowJPG/wait/20/anheyu.com/https://qsblog.top
+    - name: 阿叶Ayeez
+      link: https://blog.Ayeez.cn
+      avatar: https://blog.ayeez.cn/imgs/photo.jpg
+      descr: 记录学习历程，记录美好生活
+      siteshot: https://image.thum.io/get/width/400/crop/800/allowJPG/wait/20/anheyu.com/https://blog.Ayeez.cn
+    - name: 未似风不息
+      link: https://www.weisifengbuxi.top/
+      avatar: https://s21.ax1x.com/2025/09/26/pVIFGXq.jpg
+      descr: 学习技术 分享生活
+      siteshot: https://s21.ax1x.com/2025/09/29/pVomdB9.png
+    - name: KangQi の Blog
+      link: https://www.kangqiovo.com/
+      avatar: https://www.kangqiovo.com/wp-content/uploads/2025/10/KangQi-.png
+      descr: 惟有忍耐到底的，必然得救
+      siteshot: https://image.thum.io/get/width/400/crop/800/allowJPG/wait/20/anheyu.com/https://www.kangqiovo.com
+    - name: Yaten-Z
+      link: https://blog.yaten.xyz
+      avatar: https://s1.imagehub.cc/images/2025/05/30/55439681d8b3c2d988638c133e160a56.jpg
+      descr: 世界多变而永恒，文字孤独却自由
+      siteshot: https://image.thum.io/get/width/400/crop/800/allowJPG/wait/20/anheyu.com/https://blog.yaten.xyz
+    - name: 咕咕嘎嘎
+      link: https://www.xiguacaizimi.top
+      avatar: https://www.xiguacaizimi.top/upload/%E6%88%91%E7%9A%84%E5%A4%B4%E5%83%8F.jpg
+      descr: 一个初中生搭建的小网站
+      siteshot: https://image.thum.io/get/width/400/crop/800/allowJPG/wait/20/anheyu.com/https://www.xiguacaizimi.top

@@ -1,0 +1,65 @@
+# About
+
+嗨！这里是辰渊尘的博客关于页，我是小尘！欢迎你来到我的站点！
+
+鄙人2009年出身于 浙江省嘉兴市平湖市，目前在上职业类学校，是位高中生辣，高二辣。
+
+喜欢折腾一些奇奇怪怪的东西，喜欢骑车，喜欢旅行，热爱生活，喜欢捣鼓科技数码，喜欢玩机，还是二次元。
+
+大伙们可以叫我包括但不限于：**小尘**、**阿尘**、**尘**、**尘桑** 等等等等
+
+我是INTP-T 大众前社恐，实则慢热，和熟人比较放得开 :(
+
+一个半吊子个人开发者：编程都是爱好~
+
+### 喜欢的番
+
+我看的番不是很多，这里说下多次回顾，最爱的几部：孤独摇滚、国家队、晨曦公主、EVA（新世纪福音战士）、鬼灭之刃
+
+### 喜欢的游戏
+
+各种旮旯给木（GalGame）、Minecraft、CS、明日方舟：终末地
+
+### 技术栈
+
+Python、HTML三件套、Docker
+
+正在学习：C++、Java
+
+## 当前常用系统
+
+:spoiler[~~主力是Arch Linux，打游戏才会切win（辣鸡windows11，我linux套wine玩原神帧数都比win高）~~]
+
+因为笔记本对Arch的兼容性不佳，故现又用回windows了。。。
+
+## 我的域名
+
+:::tip
+刚换完名字，还在考虑要不要把域名一起换了，换的话我应该会用ChenDusk
+:::
+
+mcxiaochen.top - 现在在用的
+
+~~mcxiaochen.icu~~ - 这个域名用了一年，但阿里云第二年给我涨价了，一个icu域名居然要99一年！！！
+
+~~shuiarun.com - 曾经开mc服务器用的，后续与服主决裂了，所以寄了（这位“服主”只提供了服务端，出力是我，出钱是我，服务器和宽带乃至公网IP都是用的我的，后面无力承担了和他吵了一架就无了）~~
+
+~~yuanshenqidong.ddns.net - 这个其实不能说是我的，这是no-ip提供的服务，是shairun时期的备用IP~~
+
+## 社交平台
+
+- Email: <a href="mailto:mcxiaochenn_yyds@163.com">mcxiaochenn_yyds@163.com</a>
+- Coolapk: [@辰渊尘](https://www.coolapk.com/u/21508887)
+- Github: [@mcxiaochenn](https://github.com/mcxiaochenn)
+- bilibili: [@辰渊尘Dusk](https://space.bilibili.com/123757127)
+- QQ交流群：[1021796828](https://qm.qq.com/q/KZKEcWKVSq)
+
+## 关于本站
+
+- 博客日志：[点此查看](/log/)
+- 域名：[阿里云](https://aliyun.com/)
+- 文件托管于：[GitHub](https://github.com/)
+- 部署：[Netlify](https://www.netlify.com/) and [Vercel](https://vercel.com/) 双线分流
+- 其他静态服务部署：[Cloudflare](https://cloudflare.com/) , [Netlify](https://www.netlify.com/) and [Vercel](https://vercel.com/)
+- 后端服务提供：[Rainyun 润雨科技](https://www.rainyun.com/blxc123_)
+- 主题：[Fuwari](https://github.com/saicaca/fuwari) with [xcTheme](https://blog.mcxiaochen.top/)

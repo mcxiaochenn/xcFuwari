@@ -1,0 +1,192 @@
+/* ===============================
+   Folding Tag - Hexo Style (Arrow Left + Smooth Rotate)
+   =============================== */
+
+details.folding-tag {
+  display: block;
+  padding: 16px;
+  margin: 1em 0;
+  border-radius: var(--radius-large);
+  font-size: 1rem;
+  transition: all 0.28s ease;
+
+  /* 外围包边（默认主题色深一度） */
+  border: 1px solid color-mix(in oklch, var(--primary) 85%, black);
+
+  background: var(--card-bg);
+}
+
+/* 列表内缩小圆角 */
+li details.folding-tag {
+  border-radius: 8px;
+}
+
+li details.folding-tag > summary {
+  border-radius: 8px;
+}
+
+/* ---------------- summary ---------------- */
+
+details.folding-tag > summary {
+  cursor: pointer;
+  padding: 16px 16px 16px 42px; /* 给左侧箭头留空间 */
+  margin: -16px;
+  border-radius: var(--radius-large);
+  font-size: 0.875rem !important;
+  font-weight: bold;
+  line-height: normal;
+  user-select: none;
+  list-style: none;
+  position: relative;
+
+  background: var(--card-bg);
+  color: var(--text-75);
+  transition: 0.28s ease;
+}
+
+/* 去掉默认 marker */
+details.folding-tag summary::-webkit-details-marker {
+  display: none;
+}
+details.folding-tag summary::marker {
+  display: none;
+}
+
+/* 左侧旋转箭头 */
+details.folding-tag > summary::before {
+  content: "▲";
+  position: absolute;
+  left: 16px;
+  top: 50%;
+  transform: translateY(-50%) rotate(90deg); /* 默认收起 */
+  transform-origin: center;
+  transition: transform 0.35s cubic-bezier(.4,0,.2,1), opacity 0.2s ease;
+  font-size: 0.7rem;
+  opacity: 0.65;
+}
+
+/* hover */
+details.folding-tag > summary:hover {
+  background: var(--primary);
+  color: white;
+  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.08);
+}
+
+details.folding-tag > summary:hover::before {
+  opacity: 1;
+}
+
+/* ---------------- open 状态 ---------------- */
+
+details.folding-tag[open] {
+  border-color: color-mix(in oklch, var(--primary) 100%, black);
+}
+
+details.folding-tag[open] > summary {
+  background: var(--primary);
+  color: white;
+  border-bottom-left-radius: 0;
+  border-bottom-right-radius: 0;
+}
+
+/* 展开后箭头旋转回水平 */
+details.folding-tag[open] > summary::before {
+  transform: translateY(-50%) rotate(180deg);
+  opacity: 1;
+}
+
+/* 内容区 */
+details.folding-tag > .content {
+  padding: 16px;
+  margin: 0 -16px -16px;
+  border-radius: 0 0 var(--radius-large) var(--radius-large);
+}
+
+/* 展开时顶部细分隔线 */
+details.folding-tag[open] > .content {
+  border-top: 1px solid color-mix(in oklch, var(--primary) 35%, transparent);
+}
+
+/* 首尾 margin 修正 */
+details.folding-tag .content > *:first-child {
+  margin-top: 0;
+}
+details.folding-tag .content > *:last-child {
+  margin-bottom: 0;
+}
+
+/* ===============================
+   颜色支持（带深色包边）
+   =============================== */
+
+details.folding-tag[purple] {
+  border-color: oklch(0.7 0.2 300 / 0.45);
+}
+details.folding-tag[purple] > summary {
+  background: oklch(0.7 0.2 300 / 0.08);
+}
+
+details.folding-tag[blue] {
+  border-color: oklch(0.7 0.2 250 / 0.45);
+}
+details.folding-tag[blue] > summary {
+  background: oklch(0.7 0.2 250 / 0.08);
+}
+
+details.folding-tag[cyan] {
+  border-color: oklch(0.7 0.2 200 / 0.45);
+}
+details.folding-tag[cyan] > summary {
+  background: oklch(0.7 0.2 200 / 0.08);
+}
+
+details.folding-tag[green] {
+  border-color: oklch(0.7 0.2 150 / 0.45);
+}
+details.folding-tag[green] > summary {
+  background: oklch(0.7 0.2 150 / 0.08);
+}
+
+details.folding-tag[yellow] {
+  border-color: oklch(0.8 0.2 100 / 0.45);
+}
+details.folding-tag[yellow] > summary {
+  background: oklch(0.8 0.2 100 / 0.08);
+}
+
+details.folding-tag[orange] {
+  border-color: oklch(0.7 0.2 50 / 0.45);
+}
+details.folding-tag[orange] > summary {
+  background: oklch(0.7 0.2 50 / 0.08);
+}
+
+details.folding-tag[red] {
+  border-color: oklch(0.7 0.2 20 / 0.45);
+}
+details.folding-tag[red] > summary {
+  background: oklch(0.7 0.2 20 / 0.08);
+}
+
+/* 展开后保持主色 */
+details.folding-tag[open][purple] > summary,
+details.folding-tag[open][blue] > summary,
+details.folding-tag[open][cyan] > summary,
+details.folding-tag[open][green] > summary,
+details.folding-tag[open][yellow] > summary,
+details.folding-tag[open][orange] > summary,
+details.folding-tag[open][red] > summary {
+  background: var(--primary);
+  border-color: color-mix(in oklch, var(--primary) 100%, black);
+}
+
+/* ---------------- Dark Mode ---------------- */
+
+[data-theme="dark"] details.folding-tag {
+  background: transparent;
+}
+
+[data-theme="dark"] details.folding-tag > .content {
+  background: transparent;
+  color: rgba(255, 255, 255, 0.6);
+}

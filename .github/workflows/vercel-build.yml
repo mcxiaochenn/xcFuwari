@@ -1,0 +1,63 @@
+name: 构建并发布到 blog-page 分支
+on:
+  push:
+    branches:
+      - main
+  workflow_dispatch:
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    # 防止自动提交再次触发 workflow 无限循环
+    if: github.actor != 'github-actions[bot]'
+
+    steps:
+      - name: 拉取仓库代码
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: 安装 pnpm
+        uses: pnpm/action-setup@v3
+        with:
+          version: 8
+
+      - name: 安装 Node.js 环境
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          cache: pnpm
+
+      - name: 安装项目依赖
+        run: pnpm install
+
+      - name: 执行 update-diff 脚本
+        run: pnpm update-diff
+
+      - name: 检测并提交 git-history.json 变更
+        run: |
+          if [ -n "$(git status --porcelain src/json/git-history.json)" ]; then
+            git config user.name "github-actions[bot]"
+            git config user.email "github-actions[bot]@users.noreply.github.com"
+            git add src/json/git-history.json
+            git commit -m "chore: 更新 git-history.json [skip ci]"
+            git push
+          else
+            echo "git-history.json 无变更"
+          fi
+
+      - name: 构建项目
+        run: pnpm build
+
+      - name: 移动vercel.json
+        run: |
+          cp vercel.json dist/
+
+      - name: 发布到 blog-page 分支
+        uses: peaceiris/actions-gh-pages@v3
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_dir: ./dist
+          publish_branch: blog-page
+          force_orphan: true

@@ -1,0 +1,45 @@
+---
+import WidgetLayout from "./WidgetLayout.astro";
+
+interface Props {
+	class?: string;
+	style?: string;
+}
+
+const className = Astro.props.class;
+const style = Astro.props.style;
+---
+
+<WidgetLayout
+  name="随机图片"
+  id="baisi"
+  isCollapsed={false}
+  class={className}
+  style={style}
+>
+  <img
+    id="baisi-img"
+    class="w-full rounded-lg"
+    alt="baisi image"
+    loading="lazy"
+  />
+</WidgetLayout>
+
+<script is:inline>
+(() => {
+  // 每次执行都在局部作用域，不污染全局
+  const imgEl = document.getElementById("baisi-img");
+  if (!imgEl) return;
+
+  fetch("https://v2.xxapi.cn/api/baisi") // ← API 
+    .then(res => res.json())
+    .then(json => {
+      if (json.code === 200 && json.data) {
+        imgEl.src = json.data;
+      }
+    })
+    .catch(err => {
+      console.error("baisi api error:", err);
+    });
+})();
+</script>

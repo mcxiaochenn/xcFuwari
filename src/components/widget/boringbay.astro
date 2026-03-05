@@ -1,0 +1,36 @@
+---
+import WidgetLayout from "./WidgetLayout.astro";
+
+interface Props {
+  class?: string;
+  style?: string;
+}
+
+const className = Astro.props.class;
+const style = Astro.props.style;
+
+// 你的域名，记得改成你自己的
+const domain = "blog.mcxiaochen.top";
+---
+
+<WidgetLayout
+  name="无聊湾 🥱"
+  id="boringbay"
+  isCollapsed={false}
+  class={className}
+  style={style}
+>
+  <a
+    title="无聊湾 🥱 The Boring Bay"
+    href="https://boringbay.com"
+    target="_blank"
+    rel="noopener noreferrer"
+    class="flex items-center gap-2"
+  >
+    <img
+      height="18"
+      src={`https://boringbay.com/api/badge/${domain}`}
+      alt="boringbay badge"
+    />
+  </a>
+</WidgetLayout>

@@ -1,0 +1,44 @@
+---
+import type { CollectionEntry } from "astro:content";
+import { commentConfig } from "@/config";
+import Twikoo from "./Twikoo.astro";
+
+interface Props {
+	post?: CollectionEntry<"posts">;
+	path?: string;
+}
+
+const { post, path: customPath } = Astro.props;
+
+// 优先级：手动传入 path > 文章页 > 当前页面路径
+let path = "";
+
+if (customPath) {
+	path = customPath;
+} else if (post) {
+	path = `/posts/${post.slug}`;
+} else {
+	path = Astro.url.pathname;
+}
+
+let commentService = "";
+if (commentConfig?.twikoo) {
+	commentService = "twikoo";
+}
+---
+
+<div id="comments-anchor" class="comments-anchor"></div>
+<div class="card-base p-6 mb-4">
+  {commentService === 'twikoo' && path && <Twikoo path={path} />}
+</div>
+
+<style>
+.comments-anchor {
+    position: relative;
+    top: -100px; /* 预留空间防止被顶部导航遮挡 */
+    height: 1px;
+    width: 100%;
+    pointer-events: none;
+    opacity: 0;
+}
+</style>
