@@ -1,5 +1,11 @@
 {
-  "pe72ff14a": [],
+  "p3eeb": [
+    {
+      "hash": "2a073e9f63688f4cbb8b50ea11d6969b29988198",
+      "date": "2026-03-05 19:44:34 +0800",
+      "message": "feat: add new styles and utility files for enhanced UI components"
+    }
+  ],
   "p403bf94e": [
     {
       "hash": "2a073e9f63688f4cbb8b50ea11d6969b29988198",
@@ -7,11 +13,11 @@
       "message": "feat: add new styles and utility files for enhanced UI components"
     }
   ],
-  "p3eeb": [
+  "pe72ff14a": [
     {
-      "hash": "2a073e9f63688f4cbb8b50ea11d6969b29988198",
-      "date": "2026-03-05 19:44:34 +0800",
-      "message": "feat: add new styles and utility files for enhanced UI components"
+      "hash": "131470a8842010f3fded0847e156463e79dde07e",
+      "date": "2026-03-11 22:33:33 +0800",
+      "message": "feat: 更新 generate-abbrlink.mjs 以使用 Node.js 的 fs 和 path 模块，添加新文章 test2.md"
     }
   ]
 }
