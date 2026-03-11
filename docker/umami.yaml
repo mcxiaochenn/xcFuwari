@@ -1,0 +1,44 @@
+version: '3'
+services:
+  umami:
+    # 使用Umami官方最新镜像
+    image: docker.umami.is/umami-software/umami:latest
+    # 端口映射（左侧为服务器端口，右侧为容器内端口，可自定义左侧）
+    ports:
+      - "3000:3000"
+    environment:
+      # 数据库连接地址（格式：数据库类型://用户名:密码@数据库容器名:端口/数据库名）
+      DATABASE_URL: postgresql://umami:[自定义你的密码]@db:5432/umami
+      # 数据库类型（postgresql或mysql）
+      DATABASE_TYPE: postgresql
+      # 用于加密数据的随机字符串
+      HASH_SALT: [自定义你的密码]
+    # 依赖数据库容器，确保数据库先启动
+    depends_on:
+      - db
+    # 自动重启
+    restart: always
+    networks:
+      - default 
+ 
+  db:
+    # PostgreSQL镜像（15版本稳定，alpine版本体积更小）
+    image: postgres:15-alpine
+    environment:
+      # 数据库名（建议保持默认）
+      POSTGRES_DB: umami
+      # 数据库用户名（建议保持默认）
+      POSTGRES_USER: umami
+      # 数据库密码（按需修改）
+      POSTGRES_PASSWORD: [自定义你的密码]
+    volumes:
+      # 映射数据目录到本地（确保数据持久化，重启容器不丢失）
+      - ./data:/var/lib/postgresql/data
+    restart: always
+    networks:
+      - default
+ 
+networks:
+  default:
+    # 自定义网络名称，避免与其他容器冲突
+    name: umami

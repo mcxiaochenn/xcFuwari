@@ -1,0 +1,29 @@
+version: "3"
+services:
+  mongodb:
+    image: mongo:latest
+    container_name: twikoo-mongo
+    restart: always
+    environment:
+      MONGO_INITDB_ROOT_USERNAME: twikoo
+      MONGO_INITDB_ROOT_PASSWORD: [自定义你的密码]
+      MONGO_INITDB_DATABASE: twikoo
+    ports:
+      - "27017:27017"
+    volumes:
+      - ./mongo-data:/data/db   # 挂载到宿主机 ./mongo-data
+
+  twikoo:
+    image: imaegoo/twikoo
+    container_name: twikoo
+    restart: always
+    ports:
+      - 8080:8080
+    environment:
+      TWIKOO_THROTTLE: 1000
+      MONGODB_URI: "mongodb://twikoo:[自定义你的密码]@mongodb:27017/twikoo?authSource=admin&retryWrites=true&w=majority"
+      TWIKOO_IP_HEADERS: '["headers.cf-connecting-ip"]'
+    depends_on:
+      - mongodb
+    volumes:
+      - ./data:/app/data
