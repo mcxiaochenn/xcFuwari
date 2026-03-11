@@ -1,0 +1,257 @@
+<?xml version="1.0" encoding="UTF-8"?><?xml-stylesheet href="/feed/rss2.xsl" type="text/xsl"?><rss version="2.0" xmlns:content="http://purl.org/rss/1.0/modules/content/"><channel><title>辰渊尘站</title><description>ChenDusk</description><link>https://blog.mcxiaochen.top/</link><language>zh_CN</language><item><title>Astro框架Fuwari主题实现仿hexo-abbrlink功能</title><link>https://blog.mcxiaochen.top/posts/pe72ff14a/</link><guid isPermaLink="true">https://blog.mcxiaochen.top/posts/pe72ff14a/</guid><description>实现仿hexo-abbrlink功能，就是不知道改的史山有没有副作用，自己目前用着没发现问题就分享出来了，建议先自行本地部署测试后再并入生产力</description><pubDate>Thu, 26 Feb 2026 00:00:00 GMT</pubDate><content:encoded>&lt;p&gt;:::tip
+修改前必读：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;本帖基于 &lt;code&gt;Astro框架&lt;/code&gt; 进行修改方案编写，因此请读者优先掌握 &lt;a href=&quot;https://docs.astro.build/&quot;&gt;Astro Docs&lt;/a&gt; 的内容后再来进行魔改。&lt;/li&gt;
+&lt;li&gt;由于修改内容较多，以及可能会导致意料之外的事情，推荐使用 &lt;code&gt;Github&lt;/code&gt; 配合 &lt;code&gt;VSCode&lt;/code&gt; 进行修改，方便随时备份恢复
+:::&lt;/li&gt;
+&lt;/ul&gt;
+</content:encoded></item><item><title>Astro框架Fuwari主题实现仿hexo-abbrlink功能</title><link>https://blog.mcxiaochen.top/posts/p403bf94e/</link><guid isPermaLink="true">https://blog.mcxiaochen.top/posts/p403bf94e/</guid><description>实现仿hexo-abbrlink功能，就是不知道改的史山有没有副作用，自己目前用着没发现问题就分享出来了，建议先自行本地部署测试后再并入生产力</description><pubDate>Thu, 26 Feb 2026 00:00:00 GMT</pubDate><content:encoded>&lt;p&gt;:::tip
+修改前必读：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;本帖基于 &lt;code&gt;Astro框架&lt;/code&gt; 进行修改方案编写，因此请读者优先掌握 &lt;a href=&quot;https://docs.astro.build/&quot;&gt;Astro Docs&lt;/a&gt; 的内容后再来进行魔改。&lt;/li&gt;
+&lt;li&gt;由于修改内容较多，以及可能会导致意料之外的事情，推荐使用 &lt;code&gt;Github&lt;/code&gt; 配合 &lt;code&gt;VSCode&lt;/code&gt; 进行修改，方便随时备份恢复
+:::&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2&gt;前言&lt;/h2&gt;
+&lt;p&gt;好久没写文章都生疏了，好在这个框架上手挺快的，配合ai一下午就实现了短链的功能，代码拼拼改改，也不知道有没有隐藏的bug，反正我用到现在一切正常，想要在自己的博客可以接着读下去&lt;/p&gt;
+&lt;h2&gt;解析&lt;/h2&gt;
+&lt;p&gt;先来讲一下这到底是个什么玩意，如果你不知道hexo-abbrlink的话，当然我也只是个草台班子，所以尽量讲的简单点&lt;/p&gt;
+&lt;p&gt;默认情况下，Astro 生成文章链接通常会基于文件路径或 slug。例如你有一篇文章文件：&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;src/content/blog/how-to-build.md
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;默认情况下生成出来的访问地址是：&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;/web/post/how-to-build/
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;这种链接可读性强，但有两个问题：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;文件名一旦改动，会影响链接&lt;/li&gt;
+&lt;li&gt;链接长度不固定，SEO 迁移时不够稳定&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;而 &lt;code&gt;hexo-abbrlink&lt;/code&gt; 的思路是：给每篇文章生成一个固定的短 ID 作为访问路径，以后不管文件名或者内容怎么改，链接都不变。&lt;/p&gt;
+&lt;p&gt;比如原本地址是：&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;/web/post/how-to-build/
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;改造后变成：&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;/web/post/p2wt8g7/
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;那么 &lt;code&gt;p2wt8g7&lt;/code&gt; 就是这篇文章的唯一标识符。&lt;/p&gt;
+&lt;h3&gt;生产力环境下&lt;/h3&gt;
+&lt;p&gt;假设你写了一篇文章：Astro框架Fuwari主题实现仿hexo-abbrlink功能&lt;/p&gt;
+&lt;p&gt;然后文件名是 &lt;code&gt;astro-fuwari-theme-implement-hexo-abbrlink-feature.md&lt;/code&gt;&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;/web/post/astro-fuwari-theme-implement-hexo-abbrlink-feature/
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;问题就很明显了：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;链接非常长&lt;/li&gt;
+&lt;li&gt;分享时不好看&lt;/li&gt;
+&lt;li&gt;以后如果你想简化文件名，路径就会变&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;如果你后期重命名文件，改成：&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;astro-abbrlink.md
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;那访问地址就会变成：&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;/web/post/astro-abbrlink/
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;原来的链接：&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;/web/post/astro-fuwari-theme-implement-hexo-abbrlink-feature/
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;就直接 404 了。&lt;/p&gt;
+&lt;p&gt;如果已经被搜索引擎收录，或者别人引用过，就会造成失效链接。&lt;/p&gt;
+&lt;h3&gt;引入 abbrlink 后的效果&lt;/h3&gt;
+&lt;p&gt;构建时在 frontmatter 加入：&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;abbrlink: p403bf94e
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;访问地址就会变成：&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;/web/post/p403bf94e/
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;此时无论你修改标题、文件名、内容、标签、分类等，路径都不会变，这就是 &lt;code&gt;abbrlink&lt;/code&gt; 的优势所在。&lt;/p&gt;
+&lt;h2&gt;修改&lt;/h2&gt;
+&lt;p&gt;那么废话说了那么多，相信你已经理解了 &lt;code&gt;abbrlink&lt;/code&gt; 究竟是什么东西，有什么作用，接下来就是教程了。&lt;/p&gt;
+&lt;h3&gt;安装依赖&lt;/h3&gt;
+&lt;p&gt;我们需要一个生成哈希值的库，这里推荐使用 &lt;code&gt;crc-32&lt;/code&gt;，它生成的 ID 简短且碰撞率低。&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;pnpm add crc-32
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h3&gt;定义内容 Schema&lt;/h3&gt;
+&lt;pre&gt;&lt;code&gt;// src/content/config.ts
+		tags: z.array(z.string()).optional().default([]),
+		category: z.string().optional().nullable().default(&quot;&quot;),
+		lang: z.string().optional().default(&quot;&quot;),
++		abbrlink: z.string(),
+
+		/* For internal use */
+		prevTitle: z.string().default(&quot;&quot;),
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h3&gt;编写自动生成脚本&lt;/h3&gt;
+&lt;p&gt;为了不用手动去写那个复杂的 ID，我们可以写一个脚本，在开发或构建时自动扫描没有 &lt;code&gt;abbrlink&lt;/code&gt; 的文章并为其生成。&lt;/p&gt;
+&lt;p&gt;创建文件：&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;// scripts/generate-abbrlink.mjs
+import fs from &quot;fs&quot;;
+import path from &quot;path&quot;;
+import crc32 from &quot;crc-32&quot;;
+
+const POSTS_DIR = &quot;./src/content/posts&quot;;
+
+// 收集已有 abbrlink（用于冲突检测）
+const usedAbbrlinks = new Set();
+
+function walk(dir) {
+  return fs.readdirSync(dir).flatMap(file =&amp;gt; {
+    const fullPath = path.join(dir, file);
+    if (fs.statSync(fullPath).isDirectory()) {
+      return walk(fullPath);
+    }
+    return fullPath.endsWith(&quot;.md&quot;) ? [fullPath] : [];
+  });
+}
+
+const files = walk(POSTS_DIR);
+
+// 先扫描所有已有 abbrlink
+for (const file of files) {
+  const content = fs.readFileSync(file, &quot;utf-8&quot;);
+  const match = content.match(/abbrlink:\s*(\S+)/);
+  if (match) {
+    usedAbbrlinks.add(match[1]);
+  }
+}
+
+// 开始处理
+for (const file of files) {
+  const content = fs.readFileSync(file, &quot;utf-8&quot;);
+
+  if (content.includes(&quot;abbrlink:&quot;)) continue;
+
+  const match = content.match(/^---\r?\n([\s\S]*?)\r?\n---/);
+
+  if (!match) {
+    console.log(`⚠ 跳过无 frontmatter 文件: ${file}`);
+    continue;
+  }
+
+  // 生成唯一 hash
+  let salt = 0;
+  let hash;
+  let finalAbbr;
+
+  do {
+    const base = path.basename(file) + (salt || &quot;&quot;);
+    hash = (crc32.str(base) &amp;gt;&amp;gt;&amp;gt; 0).toString(16);
+    finalAbbr = &quot;p&quot; + hash;
+    salt++;
+  } while (usedAbbrlinks.has(finalAbbr));
+
+  usedAbbrlinks.add(finalAbbr);
+
+  const newFrontmatter = `---\n${match[1].trimEnd()}\nabbrlink: ${finalAbbr}\n---`;
+
+  const newContent = content.replace(match[0], newFrontmatter);
+
+  fs.writeFileSync(file, newContent);
+
+  console.log(`✓ Generated ${finalAbbr} for ${file}`);
+}
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;然后在 &lt;code&gt;package.json&lt;/code&gt; 中配置脚本，确保每次运行前都执行生成：&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;&quot;scripts&quot;: {
+  &quot;gen:abbr&quot;: &quot;node scripts/generate-abbrlink.mjs&quot;,
+  &quot;dev&quot;: &quot;pnpm gen:abbr &amp;amp;&amp;amp; astro dev&quot;,
+  &quot;build&quot;: &quot;pnpm gen:abbr &amp;amp;&amp;amp; astro build&quot;
+}
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h3&gt;修改路由逻辑&lt;/h3&gt;
+&lt;p&gt;这是最关键的一步。我们需要让 Astro 使用 &lt;code&gt;abbrlink&lt;/code&gt; 而不是文件名作为路由。&lt;/p&gt;
+&lt;p&gt;修改 &lt;code&gt;src/pages/posts/[...slug].astro&lt;/code&gt;：&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;// src/pages/posts/[...slug].astro
+export async function getStaticPaths() {
+	const blogEntries = await getSortedPosts();
+-	return blogEntries.map((entry) =&amp;gt; ({
+-		params: { slug: entry.slug },
+-		props: { entry },
+-	}));
++	return blogEntries.flatMap((entry) =&amp;gt; {
++		if (!entry.data.abbrlink) {
++			throw new Error(
++				`Post &quot;${entry.id}&quot; missing abbrlink`
++			);
++		}
++
++		return [
++			// 新短链
++			{
++				params: { slug: entry.data.abbrlink },
++				props: { entry },
++			},
++		];
++	});
++}
+
+...
+
+                &amp;lt;Content /&amp;gt;
+            &amp;lt;/Markdown&amp;gt;
+
+-            {licenseConfig.enable &amp;amp;&amp;amp; &amp;lt;License title={entry.data.title} slug={entry.slug} pubDate={entry.data.published} class=&quot;mb-6 rounded-xl license-container onload-animation&quot;&amp;gt;&amp;lt;/License&amp;gt;}
++            {licenseConfig.enable &amp;amp;&amp;amp; &amp;lt;License title={entry.data.title} slug={entry.data.abbrlink || entry.slug} pubDate={entry.data.published} class=&quot;mb-6 rounded-xl license-container onload-animation&quot;&amp;gt;&amp;lt;/License&amp;gt;}
+
+        &amp;lt;/div&amp;gt;
+    &amp;lt;/div&amp;gt;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h3&gt;适配工具函数&lt;/h3&gt;
+&lt;p&gt;由于 Fuwari 主题内部很多地方（如分类、标签、上下篇文章）都依赖 &lt;code&gt;slug&lt;/code&gt;，我们需要在 &lt;code&gt;src/utils/content-utils.ts&lt;/code&gt; 中统一将 &lt;code&gt;slug&lt;/code&gt; 替换为 &lt;code&gt;abbrlink&lt;/code&gt;。&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;// src/utils/content-utils.ts
+export async function getSortedPosts() {
+	const sorted = await getRawSortedPosts();
+
++	for (let i = 0; i &amp;lt; sorted.length; i++) {
++		sorted[i].slug = sorted[i].data.abbrlink ?? sorted[i].slug;
++	}
++
+	for (let i = 1; i &amp;lt; sorted.length; i++) {
+		sorted[i].data.nextSlug = sorted[i - 1].slug;
+		sorted[i].data.nextTitle = sorted[i - 1].data.title;
+	}
+	for (let i = 0; i &amp;lt; sorted.length - 1; i++) {
+		sorted[i].data.prevSlug = sorted[i + 1].slug;
+		sorted[i].data.prevTitle = sorted[i + 1].data.title;
+	}
+
+	return sorted;
+}
+export type PostForList = {
+	slug: string;
+	data: CollectionEntry&amp;lt;&quot;posts&quot;&amp;gt;[&quot;data&quot;];
+};
+export async function getSortedPostsList(): Promise&amp;lt;PostForList[]&amp;gt; {
+	const sortedFullPosts = await getRawSortedPosts();
+
+	// delete post.body
+	const sortedPostsList = sortedFullPosts.map((post) =&amp;gt; ({
+-		slug: post.slug,
++		slug: post.data.abbrlink ?? post.slug,
+		data: post.data,
+	}));
+
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;同时，确保 &lt;code&gt;src/utils/url-utils.ts&lt;/code&gt; 中的 &lt;code&gt;getPostUrlBySlug&lt;/code&gt; 函数能够正确处理这些短链：&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;export function getPostUrlBySlug(slug: string): string {
+    return url(`/posts/${slug}/`);
+}
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h2&gt;写在最后&lt;/h2&gt;
+&lt;p&gt;通过以上几步，我们就成功在 Astro 的 Fuwari 主题中实现了类似 Hexo 的 &lt;code&gt;abbrlink&lt;/code&gt; 功能。&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;这样做的好处显而易见：&lt;/strong&gt;&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;&lt;strong&gt;链接永久化&lt;/strong&gt;：无论你怎么折腾文件名，外部链接永远有效。&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;美观性&lt;/strong&gt;：短小精悍的 ID 比一长串中文转义字符好看得多。&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;自动化&lt;/strong&gt;：配合脚本，几乎不需要手动干预。&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;当然，如果你是中途切换到这种模式，记得给旧链接做 301 跳转，希望这篇教程能帮到正在折腾 Astro 的你！&lt;/p&gt;
+&lt;p&gt;最后，新年第一更，在新的一年，愿你眼中有光，心中有爱，脚下有路；&lt;/p&gt;
+&lt;p&gt;愿所有努力都有回响，所有期待都不被辜负；&lt;/p&gt;
+&lt;p&gt;在平凡的日子里收获踏实的幸福，在忙碌的时光中守住内心的从容，让过去成为底气，让未来充满希望，带着勇气与热情，奔赴下一场山海。&lt;/p&gt;
+&lt;p&gt;新年快乐！Happy new Year!!!&lt;/p&gt;
+</content:encoded></item><item><title>恭喜你找到了本站的第一篇文档</title><link>https://blog.mcxiaochen.top/posts/p3eeb/</link><guid isPermaLink="true">https://blog.mcxiaochen.top/posts/p3eeb/</guid><description>嗨，很高兴你能翻到这篇文章，虽然不知道此时的我是否已经完成梦想，也有可能博客已经消失在时间长河之中，但精神常在</description><pubDate>Mon, 14 Jul 2025 00:00:00 GMT</pubDate><content:encoded>&lt;p&gt;嗨，很高兴你能翻到这篇文章，虽然不知道此时的我是否已经完成梦想，也有可能博客已经消失在时间长河之中，但精神常在&lt;/p&gt;
+&lt;p&gt;相见即是缘.&lt;/p&gt;
+&lt;p&gt;总之如果以后见不到你了，那么祝你：早安、午安、下午安、晚安。&lt;/p&gt;
+&lt;p&gt;And in case I don’t see ya, good morning, good afternoon, good evening, and good night!&lt;/p&gt;
+</content:encoded></item></channel></rss>
