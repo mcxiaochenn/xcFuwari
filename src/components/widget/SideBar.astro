@@ -1,10 +1,10 @@
 ---
 import type { MarkdownHeading } from "astro";
+import Baisi from "./baisi.astro";
+import Boringbay from "./boringbay.astro";
 import Categories from "./Categories.astro";
 import Profile from "./Profile.astro";
 import Tag from "./Tags.astro";
-import Boringbay from "./boringbay.astro";
-import Baisi from "./baisi.astro";
 
 interface Props {
 	class?: string;
@@ -12,16 +12,38 @@ interface Props {
 }
 
 const className = Astro.props.class;
+
+// 侧边栏模块开关
+const sidebarModules = {
+	boringbay: true,
+	categories: true,
+	tag: true,
+	baisi: false, // 控制是否显示 Baisi
+};
 ---
+
 <div id="sidebar" class:list={[className, "w-full"]}>
     <div class="flex flex-col w-full gap-4 mb-4">
         <Profile></Profile>
     </div>
+
     <div id="sidebar-sticky" class="transition-all duration-700 flex flex-col w-full gap-4 top-4 sticky top-4">
-        <Boringbay class="onload-animation" style="animation-delay: 150ms"></Boringbay>
-        <Categories class="onload-animation" style="animation-delay: 200ms"></Categories>
-        <Tag class="onload-animation" style="animation-delay: 250ms"></Tag>
-        <Baisi class="onload-animation" style="animation-delay: 300ms"></Baisi>
+
+        {sidebarModules.boringbay && (
+            <Boringbay class="onload-animation" style="animation-delay: 150ms"></Boringbay>
+        )}
+
+        {sidebarModules.categories && (
+            <Categories class="onload-animation" style="animation-delay: 200ms"></Categories>
+        )}
+
+        {sidebarModules.tag && (
+            <Tag class="onload-animation" style="animation-delay: 250ms"></Tag>
+        )}
+
+        {sidebarModules.baisi && (
+            <Baisi class="onload-animation" style="animation-delay: 300ms"></Baisi>
+        )}
+
     </div>
 </div>
-
